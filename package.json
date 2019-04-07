@@ -1,0 +1,52 @@
+{
+  "name": "ajs-diploma",
+  "version": "1.0.0",
+  "description": "diploma project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint .",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development",
+    "doc": "jsdoc -c jsdoc.conf.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/septoon/ajs-diploma.git"
+  },
+  "keywords": [
+    "game",
+    "diploma"
+  ],
+  "author": "septoon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/septoon/ajs-diploma/issues"
+  },
+  "homepage": "https://github.com/septoon/ajs-diploma#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "core-js": "^3.0.1",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.7.1",
+    "jsdoc": "^3.5.5",
+    "mini-css-extract-plugin": "^0.5.0",
+    "path": "^0.12.7",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3"
+  }
+}
