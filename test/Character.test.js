@@ -1,4 +1,4 @@
-import Character from '../js/Character';
+import Character from '../src/js/Character';
 
 test('new target', () => {
   const expected = () => new Character('name');

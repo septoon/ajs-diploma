@@ -1,4 +1,4 @@
-import calcTileType from '../js/utils';
+import calcTileType from '../src/js/utils';
 
 test('top-left', () => {
   const received = calcTileType(0, 8);
