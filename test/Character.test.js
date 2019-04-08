@@ -2,7 +2,7 @@ import Character from '../src/js/Character';
 
 test('new target', () => {
   const expected = () => new Character('name');
-  expect(expected).toThrow()
+  expect(expected).toThrow();
 });
 
 test('new extends target', () => {
@@ -18,6 +18,12 @@ test('new extends target', () => {
   }
 
   const received = new Bowman(1);
-  const expected = { level: 1, attack: 25, defence: 25, health: 50, type: 'Bowman' };
-  expect(received).toEqual(expected)
+  const expected = {
+    level: 1,
+    attack: 25,
+    defence: 25,
+    health: 50,
+    type: 'Bowman',
+  };
+  expect(received).toEqual(expected);
 });
