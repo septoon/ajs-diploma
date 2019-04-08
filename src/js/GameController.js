@@ -1,4 +1,5 @@
 import themes from './themes';
+import arrCharacters from './characters/arrCharacters';
 
 export default class GameController {
   constructor(gamePlay, stateService) {
@@ -10,6 +11,7 @@ export default class GameController {
     // TODO: add event listeners to gamePlay events
     // TODO: load saved stated from stateService
     this.gamePlay.drawUi(themes.prairie);
+    this.gamePlay.redrawPositions(arrCharacters);
   }
 
   onCellClick(index) {

@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 export function calcTileType(index, boardSize) {
   // TODO: write logic here
+  const bs = boardSize - 1;
   if (index === 0) return 'top-left';
-  if (index === boardSize - 1) return 'top-right';
-  if (index === boardSize * (boardSize - 1)) return 'bottom-left';
+  if (index === bs) return 'top-right';
+  if (index === boardSize * bs) return 'bottom-left';
   if (index === boardSize * boardSize - 1) return 'bottom-right';
-  if (index > 0 && index < boardSize - 1) return 'top';
+  if (index > 0 && index < bs) return 'top';
   if (index % boardSize === 0) return 'left';
-  if (index % boardSize === boardSize - 1) return 'right';
-  if (index / boardSize >= boardSize - 1) return 'bottom';
+  if (index % boardSize === bs) return 'right';
+  if (index / boardSize >= bs) return 'bottom';
 
   return 'center';
 }
