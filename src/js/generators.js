@@ -1,3 +1,5 @@
+import Team from './Team';
+
 /**
  * Generates random characters
  *
@@ -11,4 +13,5 @@ export function* characterGenerator(allowedTypes, maxLevel) {
 
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   // TODO: write logic here
+  let generator = characterGenerator(allowedTypes, maxLevel);
 }
