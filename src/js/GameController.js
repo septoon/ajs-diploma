@@ -14,6 +14,12 @@ export default class GameController {
     this.gamePlay.redrawPositions(arrCharacters);
   }
 
+  showSpecific() {
+    this.gamePlay.addCellEnterListner(this.onCellEnter);
+    this.gamePlay.addCellLeaveListner(this.onCellLeave);
+    this.gamePlay.addCellClickListner(this.onCellClick);
+  }
+
   onCellClick(index) {
     // TODO: react to click
   }
