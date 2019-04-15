@@ -18,9 +18,8 @@ const getEnemyIndex = () => {
 };
 
 export default class Team {
-  constructor(team, count) {
+  constructor(team) {
     this.team = team;
-    this.count = count;
   }
 
   character(which) {
