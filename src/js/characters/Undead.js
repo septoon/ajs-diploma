@@ -6,6 +6,6 @@ export default class Undead extends Character {
     this.level = level;
     this.attack = 25;
     this.defence = 25;
-    this.type = 'Undead';
+    this.type = 'undead';
   }
 }
