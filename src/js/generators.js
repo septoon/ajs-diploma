@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
-import Team from './Team';
-import arrCharacters from './characters/arrCharacters';
 /**
  * Generates random characters
  *
@@ -11,21 +9,26 @@ import arrCharacters from './characters/arrCharacters';
  */
 export function* characterGenerator(allowedTypes, maxLevel) {
   // TODO: write logic here
-  for (arrCharacters of allowedTypes) {
-    yield new allowedTypes(maxLevel);
+  try {
+    for (const iterator of allowedTypes) {
+      yield new iterator(maxLevel + 1);
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
+
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   // TODO: write logic here
-  const result = []; 
+  const result = [];
   const generator = characterGenerator(allowedTypes, maxLevel);
-  const team = new Team(result);
-  
+
   if (characterCount > 2) console.error('must be 2 characters on team');
-  
-  for (let value of generator) {
-    result.push(value);
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < characterCount; i++) {
+    result.push(generator.next().value);
   }
-  return team;
+  return result;
 }
