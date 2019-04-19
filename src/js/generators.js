@@ -10,14 +10,13 @@
 export function* characterGenerator(allowedTypes, maxLevel) {
   // TODO: write logic here
   try {
-    for (const iterator of allowedTypes) {
-      yield new iterator(maxLevel + 1);
+    for (const Iterator of allowedTypes) {
+      yield new Iterator(maxLevel);
     }
   } catch (e) {
     console.log(e);
   }
 }
-
 
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   // TODO: write logic here
