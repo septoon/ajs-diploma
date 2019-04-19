@@ -1,4 +1,5 @@
 import PositionedCharacter from './PositionedCharacter';
+// eslint-disable-next-line import/no-cycle
 import { generateTeam } from './generators';
 
 const userIndex = [0, 1, 8, 9, 16, 17, 24, 25, 32, 33, 40, 41, 48, 49, 56, 57];
@@ -23,15 +24,20 @@ export default class Team {
     this.count = count;
   }
 
+  get command() {
+    const random = this.team.sort(() => Math.random() - 0.5);
+    return generateTeam(random, this.level, this.count);
+  }
+
   side(which) {
     const total = [];
-    const randomTeam = Math.floor(Math.random() * this.team.length);
-    const totalTeam = this.team[randomTeam];
-    const end = generateTeam(totalTeam, this.level, this.count)
-    const userPosition = new PositionedCharacter(end, getUserIndex());
-    const enemyPosition = new PositionedCharacter(end, getEnemyIndex());
-    if (which === 'enemy') total.push(enemyPosition);
-    if (which === 'user') total.push(userPosition);
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < this.command.length; i++) {
+      const userPosition = new PositionedCharacter(this.command[i], getUserIndex());
+      const enemyPosition = new PositionedCharacter(this.command[i], getEnemyIndex());
+      if (which === 'enemy') total.push(enemyPosition);
+      if (which === 'user') total.push(userPosition);
+    }
     return total;
   }
 }
