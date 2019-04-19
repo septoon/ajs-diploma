@@ -1,28 +1,21 @@
 /* eslint-disable no-console */
 import themes from './themes';
-import { usTeam, enTeam } from './characters/arrCharacters'
-import Team from './Team'
-
-// const user = new Team(usTeam);
-// console.log(user);
-// console.log(user.side('user'));
-
-// const enemy = new Team(enTeam);
-// console.log(enemy);
-// console.log(enemy.side('enemy'));
+import { usTeam, enTeam } from './characters/arrCharacters';
+import Team from './Team';
+import icons from './iconsInfo';
 
 const generateUser = new Team(usTeam, 1, 2);
 console.log(generateUser);
 const generateEnemy = new Team(enTeam, 1, 2);
-console.log(generateEnemy)
+console.log(generateEnemy);
 
 const user = generateUser.side('user');
 console.log(user);
 const enemy = generateEnemy.side('enemy');
 console.log(enemy);
 
-
-const allTeam = [user, enemy];
+const allTeam = [...user, ...enemy];
+console.log(allTeam);
 
 export default class GameController {
   constructor(gamePlay, stateService) {
