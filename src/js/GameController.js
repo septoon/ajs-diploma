@@ -28,14 +28,14 @@ export default class GameController {
     // TODO: load saved stated from stateService
     this.gamePlay.drawUi(themes.prairie);
     this.gamePlay.redrawPositions(allTeam);
-
+    this.showSpecific(this.gamePlay);
   }
 
-  // showSpecific() {
-  //   this.gamePlay.addCellEnterListner(this.onCellEnter);
-  //   this.gamePlay.addCellLeaveListner(this.onCellLeave);
-  //   this.gamePlay.addCellClickListner(this.onCellClick);
-  // }
+  showSpecific() {
+    this.gamePlay.addCellEnterListener(this.onCellEnter.bind(this));
+    this.gamePlay.addCellLeaveListener(this.onCellLeave.bind(this));
+    this.gamePlay.addCellClickListener(this.onCellClick.bind(this));
+  }
 
   onCellClick(index) {
     // TODO: react to click
@@ -43,9 +43,18 @@ export default class GameController {
 
   onCellEnter(index) {
     // TODO: react to mouse enter
+    // eslint-disable-next-line no-restricted-syntax
+    for (const i of allTeam) {
+      if (i.position === index) {
+        const ch = i.character;
+        const specific = `${icons.level}${ch.level} ${icons.attack}${ch.attack} ${icons.defence}${ch.defence} ${icons.health}${ch.health}`;
+        this.gamePlay.showCellTooltip(specific, index);
+      }
+    }
   }
 
   onCellLeave(index) {
     // TODO: react to mouse leave
+    this.gamePlay.hideCellTooltip(index);
   }
 }
