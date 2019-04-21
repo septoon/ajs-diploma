@@ -24,7 +24,7 @@ export default class GameController {
     this.gamePlay = gamePlay;
     this.stateService = stateService;
   }
-               
+
   init() {
     // TODO: add event listeners to gamePlay events
     // TODO: load saved stated from stateService
