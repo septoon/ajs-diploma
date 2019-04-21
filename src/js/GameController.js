@@ -5,24 +5,26 @@ import Team from './Team';
 import icons from './iconsInfo';
 
 const generateUser = new Team(usTeam, 1, 2);
-console.log(generateUser);
+// console.log(generateUser);
 const generateEnemy = new Team(enTeam, 1, 2);
-console.log(generateEnemy);
+// console.log(generateEnemy);
 
 const user = generateUser.side('user');
-console.log(user);
+// console.log(user);
 const enemy = generateEnemy.side('enemy');
-console.log(enemy);
+// console.log(enemy);
 
 const allTeam = [...user, ...enemy];
-console.log(allTeam);
+// console.log(allTeam);
+
+const coursor = { pointer: 'pointer', crosshair: 'crosshair', notallowed: 'notallowed' };
 
 export default class GameController {
   constructor(gamePlay, stateService) {
     this.gamePlay = gamePlay;
     this.stateService = stateService;
   }
-
+               
   init() {
     // TODO: add event listeners to gamePlay events
     // TODO: load saved stated from stateService
@@ -39,6 +41,15 @@ export default class GameController {
 
   onCellClick(index) {
     // TODO: react to click
+    // eslint-disable-next-line no-restricted-syntax
+    for (const i of user) {
+      const types = ['swordsman', 'bowman', 'magician'];
+      if (i.position === index && types.includes(i.character.type)) {
+        console.log(i);
+        this.gamePlay.selectCell(index);
+        console.log(i.position);
+      }
+    }
   }
 
   onCellEnter(index) {
@@ -49,6 +60,7 @@ export default class GameController {
         const ch = i.character;
         const specific = `${icons.level}${ch.level} ${icons.attack}${ch.attack} ${icons.defence}${ch.defence} ${icons.health}${ch.health}`;
         this.gamePlay.showCellTooltip(specific, index);
+        this.gamePlay.setCursor(coursor.pointer);
       }
     }
   }
