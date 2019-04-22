@@ -64,6 +64,9 @@ export default class GameController {
       }
       if (i.position === index && enemyTypes.includes(i.character.type)) {
         this.gamePlay.setCursor(cursors.crosshair);
+        this.gamePlay.selectCell(index, 'red');
+      } else {
+        this.gamePlay.selectCell(index, 'green');
       }
     }
   }
@@ -72,5 +75,6 @@ export default class GameController {
     // TODO: react to mouse leave
     this.gamePlay.hideCellTooltip(index);
     this.gamePlay.setCursor(cursors.auto);
+    this.gamePlay.deselectCell(index, 'green');
   }
 }
