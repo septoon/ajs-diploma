@@ -55,13 +55,13 @@ export default class GameController {
     // TODO: react to mouse enter
     // eslint-disable-next-line no-restricted-syntax
     for (const i of allTeam) {
+      const ch = i.character;
+      const specific = `${icons.level}${ch.level} ${icons.attack}${ch.attack} ${icons.defence}${ch.defence} ${icons.health}${ch.health}`;
+      const enemyTypes = ['vampire', 'undead', 'daemon'];
       if (i.position === index) {
-        const ch = i.character;
-        const specific = `${icons.level}${ch.level} ${icons.attack}${ch.attack} ${icons.defence}${ch.defence} ${icons.health}${ch.health}`;
         this.gamePlay.showCellTooltip(specific, index);
         this.gamePlay.setCursor(cursors.pointer);
       }
-      const enemyTypes = ['vampire', 'undead', 'daemon'];
       if (i.position === index && enemyTypes.includes(i.character.type)) {
         this.gamePlay.setCursor(cursors.crosshair);
       }
@@ -71,5 +71,6 @@ export default class GameController {
   onCellLeave(index) {
     // TODO: react to mouse leave
     this.gamePlay.hideCellTooltip(index);
+    this.gamePlay.setCursor(cursors.auto);
   }
 }
