@@ -3,6 +3,7 @@ import themes from './themes';
 import { usTeam, enTeam } from './characters/arrCharacters';
 import Team from './Team';
 import icons from './iconsInfo';
+import cursors from './cursors';
 
 const generateUser = new Team(usTeam, 1, 2);
 // console.log(generateUser);
@@ -16,8 +17,6 @@ const enemy = generateEnemy.side('enemy');
 
 const allTeam = [...user, ...enemy];
 // console.log(allTeam);
-
-const coursor = { pointer: 'pointer', crosshair: 'crosshair', notallowed: 'notallowed' };
 
 export default class GameController {
   constructor(gamePlay, stateService) {
@@ -43,8 +42,8 @@ export default class GameController {
     // TODO: react to click
     // eslint-disable-next-line no-restricted-syntax
     for (const i of user) {
-      const types = ['swordsman', 'bowman', 'magician'];
-      if (i.position === index && types.includes(i.character.type)) {
+      const userTypes = ['swordsman', 'bowman', 'magician'];
+      if (i.position === index && userTypes.includes(i.character.type)) {
         console.log(i);
         this.gamePlay.selectCell(index);
         console.log(i.position);
@@ -60,7 +59,11 @@ export default class GameController {
         const ch = i.character;
         const specific = `${icons.level}${ch.level} ${icons.attack}${ch.attack} ${icons.defence}${ch.defence} ${icons.health}${ch.health}`;
         this.gamePlay.showCellTooltip(specific, index);
-        this.gamePlay.setCursor(coursor.pointer);
+        this.gamePlay.setCursor(cursors.pointer);
+      }
+      const enemyTypes = ['vampire', 'undead', 'daemon'];
+      if (i.position === index && enemyTypes.includes(i.character.type)) {
+        this.gamePlay.setCursor(cursors.crosshair);
       }
     }
   }
