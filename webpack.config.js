@@ -2,21 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // устанавливается через npm
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // устанавливается через npm
 
-
 module.exports = {
-  mode: 'production',
-  entry: {
-    main: './src/index.js',
-  },
+  entry: './src/index.js',
   output: {
-    filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist',
   },
   devtool: 'source-map',
-  devServer: {
-    overlay: true,
-  },
   module: {
     rules: [
       {
@@ -56,6 +47,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      alwaysWriteToDisk: true,
       template: './src/index.html',
       filename: './index.html',
     }),
