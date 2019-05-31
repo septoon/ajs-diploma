@@ -65,7 +65,8 @@ export default class GameController {
       if (i.position === index && enemyTypes.includes(i.character.type)) {
         this.gamePlay.setCursor(cursors.crosshair);
         this.gamePlay.selectCell(index, 'red');
-      } else {
+      }
+      if (index !== i.position) {
         this.gamePlay.selectCell(index, 'green');
       }
     }
